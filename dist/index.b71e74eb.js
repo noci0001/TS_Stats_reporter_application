@@ -558,26 +558,21 @@ function hmrAccept(bundle, id) {
 
 },{}],"h7u1C":[function(require,module,exports) {
 var _user = require("./models/User");
-const user = new (0, _user.User)({});
-user.on("change", ()=>{
-    console.log("Change function triggered");
+const user = new (0, _user.User)({
+    name: "new record",
+    age: 0
 });
-user.on("trigger", ()=>{
-    console.log("trigger function triggered");
-});
-user.trigger("trigger");
-user.trigger("change");
-user.trigger("Alaska");
 console.log(user);
 
 },{"./models/User":"4rcHn"}],"4rcHn":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "User", ()=>User);
+var _eventing = require("./Eventing");
 class User {
     constructor(data){
         this.data = data;
-        this.events = {};
+        this.events = new (0, _eventing.Eventing)();
     }
     get(propName) {
         if (!(propName in this.data)) throw new Error("Property ${propName} not found");
@@ -586,6 +581,15 @@ class User {
     set(update) {
         Object.assign(this.data, update);
     }
+}
+
+},{"./Eventing":"7459s","@parcel/transformer-js/src/esmodule-helpers.js":"86LIi"}],"7459s":[function(require,module,exports) {
+// Type Alias
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "Eventing", ()=>Eventing);
+class Eventing {
+    events = {};
     on(eventName, callback) {
         const handlers = this.events[eventName] || [];
         handlers.push(callback);
@@ -630,6 +634,6 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}]},["3H85u","h7u1C"], "h7u1C", "parcelRequire3a3c")
+},{}]},["3H85u","h7u1C"], "h7u1C", "parcelRequire94c2")
 
 //# sourceMappingURL=index.b71e74eb.js.map

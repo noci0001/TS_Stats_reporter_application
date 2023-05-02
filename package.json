@@ -1,23 +1,13 @@
 {
-  "name": "tsc_stats",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start:build": "tsc -w",
-    "start:run": "nodemon build/index.js",
-    "start": "npx parcel index.html"
+  "devDependencies": {
+    "process": "^0.11.10",
+    "typescript": "^3.4.5"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "@types/node": "^18.16.3",
-    "cli": "^1.0.1",
-    "concurrently": "^8.0.1",
-    "json-server": "^0.17.3",
-    "nodemon": "^2.0.22",
-    "npm-cli": "^0.1.0",
-    "semver": "^7.5.0"
+    "axios": "^0.18.0"
+  },
+  "scripts": {
+    "start:db": "npx json-server --watch db.json",
+    "start:parcel": "npx parcel index.html"
   }
 }
