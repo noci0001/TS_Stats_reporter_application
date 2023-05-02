@@ -6,7 +6,7 @@
   "scripts": {
     "start:build": "tsc -w",
     "start:run": "nodemon build/index.js",
-    "start": "concurrently npm:start:*"
+    "start": "npx parcel index.html"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +15,7 @@
     "@types/node": "^18.16.3",
     "cli": "^1.0.1",
     "concurrently": "^8.0.1",
+    "json-server": "^0.17.3",
     "nodemon": "^2.0.22",
     "npm-cli": "^0.1.0",
     "semver": "^7.5.0"

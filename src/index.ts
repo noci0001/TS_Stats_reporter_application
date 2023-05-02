@@ -1,8 +1,17 @@
-import { MatchReader} from './MatchReader';
-import { Summary } from './Summary';
+import { User} from "./models/User";
 
-const matchReader = MatchReader.fromCsv('football.csv');
-const summary = Summary.winsAnalysisWithHtmlReport('Man United');
+const user = new User({});
 
-matchReader.load();
-summary.buildAndPrintReport(matchReader.matches);
+user.on('change', () => {
+    console.log('Change function triggered');
+});
+
+user.on('trigger', () => {
+    console.log('trigger function triggered');
+});
+
+user.trigger('trigger');
+user.trigger('change');
+user.trigger('Alaska');
+
+console.log(user);
